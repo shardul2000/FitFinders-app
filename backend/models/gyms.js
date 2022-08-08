@@ -20,4 +20,16 @@ const getGymDetails = async (data) => {
     const details = await dynamoClient.get(params).promise();
     return details;
 };
-module.exports = { getGymListings, getGymDetails }
+
+const createGymListing = async(data) => {
+    const params = {
+        TableName: TABLE_NAME,
+        Item: {
+            ...data
+        }
+    };
+    const res= await dynamoClient.put(params).promise();
+    return res;
+};
+
+module.exports = { getGymListings, getGymDetails, createGymListing}

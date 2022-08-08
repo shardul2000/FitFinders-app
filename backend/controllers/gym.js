@@ -1,6 +1,6 @@
 const { createPost, getPosts  } = require("../models/gym_forum");
 const { v4: uuidv4 } = require('uuid');
-const { getGymListings, getGymDetails } = require("../models/gyms");
+const { getGymListings, getGymDetails, createGymListing } = require("../models/gyms");
 
 
 const createPostController = async(req,res,next) => {
@@ -74,4 +74,17 @@ const getGymDetailsController = async(req,res,next) => {
    } 
 }
 
-module.exports ={ createPostController, getPostsController, getGymListingsController, getGymDetailsController }
+
+const createGymListingController = async(req,res,next) => {
+
+   const data = req.body;
+   
+   try{
+     await createGymListing(data);
+     res.status(200).json({success:true})
+   }catch(e){
+      res.status(500).json({success:false, error: e})
+   }
+}
+
+module.exports ={ createPostController, getPostsController, getGymListingsController, getGymDetailsController, createGymListingController }

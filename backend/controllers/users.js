@@ -18,7 +18,7 @@ const uploadAvatar = async(req,res,next) => {
     const format=avatar.mimetype.split("/")[1];
     const key = (guid+"."+format).toString();
     
-    var params = { Bucket: 'b00798007', Key: key};
+    var params = { Bucket: 'picsfitfinders', Key: key};
     const paramsStoredata = {
      ...params,
      Body: avatar.data
@@ -68,7 +68,7 @@ const uploadPics = async(req,res,next) => {
       const format=pic.mimetype.split("/")[1];
       const key = (guid+"."+format).toString();
       
-      var params = { Bucket: 'b00798007', Key: key};
+      var params = { Bucket: 'picsfitfinders', Key: key};
       const paramsStoredataPic = {
           ...params,
           Body: pic.data
