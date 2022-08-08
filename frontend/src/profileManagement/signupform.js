@@ -151,7 +151,8 @@ export default function SignUpForm() {
             }
           }else{
             //if no error
-            navigate("/profile"); 
+            navigate("/login"); 
+            alert("Thank you for signing up, please check your email for the verification link.") 
           }     
         });      
       }
