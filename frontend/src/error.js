@@ -8,11 +8,13 @@ import { useNavigate } from "react-router-dom";
 export default function ErrorPage(){
 
     let navigate = useNavigate();
-    useEffect(() => {
+   
+   /* useEffect(() => {
+       
         setTimeout(() => {
           navigate('/login')
         }, 5000)
-    }, [])
+    }, [])*/
     
     return(
         <div>

@@ -1,4 +1,4 @@
-import { Paper, Avatar, Typography, Grid, Card, CardContent,Rating, Chip,TextField,Button,ListItem,List} from "@mui/material";
+import { Paper, Avatar, Typography, Grid, Card, CardContent,Rating, Chip,TextField,Button,ListItem,List, getAccordionDetailsUtilityClass} from "@mui/material";
 import { useState, useEffect} from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -12,7 +12,12 @@ import Reviews from "../components/viewReviews";
 
 export default function MyProfile(){
 
-    const currUser= localStorage.getItem("currentUser");
+    let currUser=null;
+    if(localStorage.getItem("currentUser")!=null){
+         currUser= localStorage.getItem("currentUser");
+    }
+   
+  
     let navigate = useNavigate();
 
     const [open, setOpen] = useState(false);
@@ -20,7 +25,8 @@ export default function MyProfile(){
     const handleOpen = () => setOpen(true);
     const [reviewsList, setReviewsList] =useState([]);
 
-    const [values, setValues] = useState({
+
+   /* const [values, setValues] = useState({
         city: JSON.parse(currUser).city,
         age:'',
         tags: '',
@@ -33,10 +39,13 @@ export default function MyProfile(){
         gender:JSON.parse(currUser).gender,
         fname: JSON.parse(currUser).fname,
         lname: JSON.parse(currUser).lname
-    });
-    const [tags, setTags] = useState([]);
+    });*/
 
+    const [values, setValues] = useState({avatar:''})
+    const[error,setError]= useState(false);
+    const [tags, setTags] = useState([]);
     useEffect(()=>{
+       
         axios.get(`/api/users/getUserData/${localStorage.getItem("uid")}`,{headers: {
             "Content-Type": "application/json",
             Authorization: `${localStorage.getItem("jwtToken")}`
@@ -45,8 +54,31 @@ export default function MyProfile(){
             setValues(res.data.userData);
             const map=res.data.userData.tags.split(",");       
             setTags(map); 
+            setValues({
+                city: JSON.parse(currUser).city,
+                age:'',
+                tags: '',
+                summary:'',
+                regimen:'',
+                avatar:'',
+                pic1:'',
+                pic2:'',
+                email: JSON.parse(currUser).email,
+                gender:JSON.parse(currUser).gender,
+                fname: JSON.parse(currUser).fname,
+                lname: JSON.parse(currUser).lname
+            })
         }) 
+        .catch((e)=>{
+            setError(true);
+            navigate("/error");
+            navigate(0);
+        })
 
+        
+    },[])
+
+    useEffect(()=>{
         axios.get(`/api/profile/getReviews/${localStorage.getItem("uid")}`)
         .then((res)=>{
             setReviewsList(res.data.reviews);
@@ -54,9 +86,12 @@ export default function MyProfile(){
         .catch((e)=>{
             console.log("Error "+e)
         });
-    },[]);
+    },[])
+
 
     return(
+
+        !error?(
         <div>
         <Navbar />
         <Editmodal open={open} handleClose={handleClose} handleOpen={handleOpen} values={values} setValues={setValues}/>
@@ -125,6 +160,6 @@ export default function MyProfile(){
             </Paper>       
         </div>
         <Footer />
-        </div>
+        </div>):(<></>)
     )
 }
