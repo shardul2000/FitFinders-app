@@ -3,12 +3,13 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import background from './assets/Mathing.png';
 import './css/home.css';
-import buddy from'./assets/buddy.png'
+import findbuddy from'./assets/findbuddy.png'
 import Card from "./components/card";
 import GymCard from "./components/gymcard";
 import BuddyCard from "./components/buddycard";
 import { Container } from "@mui/system";
 import { Link } from "react-router-dom";
+import AdvertsCard from "./components/advertsCard";
 
 export default function Home(){
     return(
@@ -34,7 +35,7 @@ export default function Home(){
                              <Card />
                         </Grid>
                         <Grid item xs={12} sm ={12} md={6}>
-                             <Card />
+                             <AdvertsCard />
                         </Grid>
                     </Grid>
                         

@@ -67,16 +67,16 @@ export default function GymForm() {
             };
             axios.post("/api/users/uploadAvatar", formData, config)
             .then((res)=>{
-              values.coverImage = res.data.s3uri;
-              console.log(res.data.s3uri);
-              alert(res.data.s3uri);
-              values.name = values.displayName.replaceAll(/\s/g,'') + values.city;
-              return values
+                values.coverImage = res.data.s3uri;
+                console.log(res.data.s3uri);
+                values.name = values.displayName.replaceAll(/\s/g,'') + values.city;
+                return values;
             })
             .then((data)=>{
               axios.post('/api/gym/createGymListing',data)
               .then((res)=>{
                   alert("Thank you, our team will verify the details");
+                  navigate("/gymlistings")
               })
               .catch((e)=>{
                   console.log("Error:  " + e);
@@ -92,10 +92,6 @@ export default function GymForm() {
         
     }
   });
-
- 
-
-  
  
   const validate = (event) => {
     if(coverIsUploaded==false){

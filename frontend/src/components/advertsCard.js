@@ -1,17 +1,17 @@
 import React from 'react';
 import { MDBCard, MDBCardBody, MDBCardText, MDBCardImage } from 'mdb-react-ui-kit';
-import buddy from '../assets/findbuddy.png';
+import ads from '../assets/ads.png';
 import { ButtonBase } from '@mui/material';
 import '../css/home.css'
 
-export default function BuddyCard() {
+export default function AdvertsCard() {
   return (
     <ButtonBase>
     <MDBCard style={{ width: '15rem', borderRadius:100, margin:2}} className='shadow card'>
-      <MDBCardImage src={buddy} alt='...' position='top' />
+      <MDBCardImage src={ads} alt='...' position='top' />
       <MDBCardBody>
         <MDBCardText>
-         Find a Buddy
+          Advertisements
         </MDBCardText>
       </MDBCardBody>
     </MDBCard>

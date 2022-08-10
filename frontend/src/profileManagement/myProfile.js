@@ -12,7 +12,17 @@ import Reviews from "../components/viewReviews";
 
 export default function MyProfile(){
 
-    let currUser=null;
+    let currUser={
+        email:'',
+        gender:'',
+        fname:'',
+        lname:'',
+        city:''
+    }
+    let userId= localStorage.getItem("uid");
+    currUser=JSON.stringify(currUser);
+
+
     if(localStorage.getItem("currentUser")!=null){
          currUser= localStorage.getItem("currentUser");
     }
@@ -26,8 +36,9 @@ export default function MyProfile(){
     const [reviewsList, setReviewsList] =useState([]);
 
 
-   /* const [values, setValues] = useState({
-        city: JSON.parse(currUser).city,
+    const [values, setValues] = useState({
+        userId: userId,
+        city: '',
         age:'',
         tags: '',
         summary:'',
@@ -39,9 +50,9 @@ export default function MyProfile(){
         gender:JSON.parse(currUser).gender,
         fname: JSON.parse(currUser).fname,
         lname: JSON.parse(currUser).lname
-    });*/
+    });
 
-    const [values, setValues] = useState({avatar:''})
+  //  const [values, setValues] = useState({avatar:''})
     const[error,setError]= useState(false);
     const [tags, setTags] = useState([]);
     useEffect(()=>{
@@ -54,20 +65,6 @@ export default function MyProfile(){
             setValues(res.data.userData);
             const map=res.data.userData.tags.split(",");       
             setTags(map); 
-            setValues({
-                city: JSON.parse(currUser).city,
-                age:'',
-                tags: '',
-                summary:'',
-                regimen:'',
-                avatar:'',
-                pic1:'',
-                pic2:'',
-                email: JSON.parse(currUser).email,
-                gender:JSON.parse(currUser).gender,
-                fname: JSON.parse(currUser).fname,
-                lname: JSON.parse(currUser).lname
-            })
         }) 
         .catch((e)=>{
             setError(true);

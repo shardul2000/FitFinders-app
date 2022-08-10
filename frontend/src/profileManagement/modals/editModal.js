@@ -25,6 +25,21 @@ export default function Editmodal({open, handleClose, handleOpen, values, setVal
 
     const[avatar, setAvatar]=useState(null);
     const[pics, setPics]=useState([]);
+    const[valuesFinal, setValuesFinal]=useState(false);
+
+
+    //make post request after making sure values is being updated
+    useEffect(()=>{
+      if(valuesFinal){
+        axios.post("/api/users/addData", values)
+        .then(()=>{
+           alert("Profile Updated. Please refresh to see changes")
+        })
+        .catch((e)=>{
+            alert(e)
+        })
+      }
+    },[valuesFinal])
 
     const handleSubmit = async(e) => {
      
@@ -43,7 +58,7 @@ export default function Editmodal({open, handleClose, handleOpen, values, setVal
         }
         const formDataPics = new FormData();
         if(pics.length>1){
-           alert(pics.length)
+    
             pics.forEach((pic)=>{
                 formDataPics.append('pics', pic);
             })
@@ -55,14 +70,11 @@ export default function Editmodal({open, handleClose, handleOpen, values, setVal
             };
             let res =  await axios.post("/api/users/uploadPics", formDataPics, config);
             //setPics([...pics,res.data.s3uri]);
-            alert(res.data.s3uri);
+
             setValues({...values, pic1: res.data.s3uri[0],pic2:res.data.s3uri[1]})
         }
       
-        values.userId=localStorage.getItem("uid");
-       
-        await axios.post("/api/users/addData", values);
-        alert("Profile Updated. Please refresh to see changes")
+        setValuesFinal(true);
         handleClose();
     }
 

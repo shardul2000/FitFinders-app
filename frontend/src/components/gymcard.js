@@ -1,6 +1,6 @@
 import React from 'react';
 import { MDBCard, MDBCardBody, MDBCardText, MDBCardImage } from 'mdb-react-ui-kit';
-import gym from '../assets/gym.jpg';
+import gym from '../assets/gym.png';
 import { ButtonBase } from '@mui/material';
 import '../css/home.css'
 
