@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import AdvertsCard from "./components/advertsCard";
 import Bot from "./components/chatbot"; 
 
+/*  */
 export default function Home(){
     return(
         <div>
