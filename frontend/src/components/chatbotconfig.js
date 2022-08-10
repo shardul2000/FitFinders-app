@@ -8,7 +8,7 @@ import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-id
     region: REGION,
     credentials: fromCognitoIdentityPool({
         client: new CognitoIdentityClient({ region: "us-east-1" }),
-        identityPoolId: '',
+        identityPoolId: 'us-east-1:0b2de831-4bfa-4fb1-ad59-fd9c47c9c238',
     }),
     });
 

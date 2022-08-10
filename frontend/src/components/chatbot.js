@@ -8,8 +8,8 @@ import { useNavigate } from 'react-router-dom';
 
 
   var lexparams = {
-      botAliasId: "",
-      botId: "", 
+      botAliasId: "TSTALIASID",
+      botId: "7I7BP40L9U", 
       localeId: "en_US",
       sessionId: "some_session_id1",
       text: '',
@@ -20,7 +20,7 @@ export default function Bot(){
     let navigate = useNavigate();
     const[userMessage, setUserMessage] = useState("");
     useEffect(() => {
-        addResponseMessage('Welcome to Fitfinders! If you have any questions, feel free to send them here!');
+        addResponseMessage('Welcome to Fitfinders! If you have any questions, feel free to send them here!\n Some starters:\n -Hi\n-What can I do on this app?\n-Find gym buddies');
       }, []);
       
 
@@ -57,3 +57,4 @@ export default function Bot(){
             />
         );
 }
+

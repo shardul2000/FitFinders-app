@@ -1,9 +1,11 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "proxy":"http://localhost:5000",
+  "proxy": "http://localhost:5000",
   "private": true,
   "dependencies": {
+    "@aws-sdk/client-lex-runtime-v2": "^3.145.0",
+    "@aws-sdk/credential-provider-cognito-identity": "^3.145.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^5.8.4",
@@ -21,6 +23,7 @@
     "mdb-ui-kit": "^4.2.0",
     "react": "^17.0.2",
     "react-alice-carousel": "^2.6.1",
+    "react-chat-widget": "^3.1.4",
     "react-dom": "^17.0.2",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.3.0",

@@ -1,6 +1,7 @@
 import { Avatar, Grid, Rating, Typography } from "@mui/material";
 import axios from "axios";
 import { useState,useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function Reviews({review}){
 
@@ -17,7 +18,7 @@ export default function Reviews({review}){
     return(
         <div>
             <Grid container spacing ={3} alignItems="center" justifyContent="center" direction='column'>
-                <Typography variant="h6" component='div' sx={{margin:2}}>{userData.fname+" "+userData.lname}</Typography>
+            <Link to={`/profile/${userData.userId}`}><Typography variant="h6" component='div' sx={{margin:2}}>{userData.fname+" "+userData.lname}</Typography></Link>
                 <Avatar
                         className="shadow"
                         alt="Remy Sharp"

@@ -34,7 +34,8 @@ export default function Profile(){
                setTags(map);       
              
             }catch(e){
-                 navigate("/error")
+                 navigate("/error");
+                 navigate(0);
             }
         }
        asyncFunc(); 

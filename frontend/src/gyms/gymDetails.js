@@ -6,9 +6,11 @@ import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
 
 export default function GymDetails(){
+
+    let navigate = useNavigate();
 
     const { gym }= useParams();
     const [posts, setPosts]= useState([]);
@@ -25,7 +27,10 @@ export default function GymDetails(){
             setDetails(data);
         })
         .catch((e)=>{
-            console.log(e);
+            console.log("Hey you" +e);
+
+            navigate("/error");
+            navigate(0);
         });
 
         axios.get(`/api/gym/getPosts/${gym}`,{headers: {

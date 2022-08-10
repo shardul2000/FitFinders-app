@@ -103,7 +103,7 @@ export default function MyProfile(){
                          src = {values.avatar} 
                          sx={{height:'9em', width:'9em', marginBlock:4}}
                     />
-                    <Typography variant="h4" component='div'>{values.fname + values.lname}</Typography>
+                    <Typography variant="h4" component='div'>{values.fname +" "+values.lname}</Typography>
                     <Grid item>
                      
                         <Button onClick={handleOpen} variant="contained" sx={{marginRight:2}}> <IconButton><EditIcon sx={{color:'white'}} /></IconButton> Edit Profile</Button>

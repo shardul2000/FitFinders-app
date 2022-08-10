@@ -4,6 +4,8 @@ const jwt = require("jsonwebtoken");
 const middleware = async(req,res,next) => {
  
     let token = req.headers.authorization;
+
+    console.log("token is      "+token)
     if (!token){
         let err = new Error('You are Not Authenticated!');
         err.status = 401;

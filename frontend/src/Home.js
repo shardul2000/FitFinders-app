@@ -10,6 +10,7 @@ import BuddyCard from "./components/buddycard";
 import { Container } from "@mui/system";
 import { Link } from "react-router-dom";
 import AdvertsCard from "./components/advertsCard";
+import Bot from "./components/chatbot"; 
 
 export default function Home(){
     return(
@@ -51,6 +52,7 @@ export default function Home(){
                    }}>    
                 </Grid>
             </Grid>
+            <Bot />
 
            
          

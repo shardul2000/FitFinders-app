@@ -5,9 +5,9 @@ const { middleware } = require("../middleware/auth")
 const{ postReview, getReviews} = require('../controllers/profile');
 
 
-router.route("/postReview").post(postReview);
+router.route("/postReview").post( middleware,postReview);
 router.route("/getReviews/:id").get(getReviews);
 
 
 
-module.exports = router;
+module.exports = router; 

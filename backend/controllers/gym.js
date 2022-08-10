@@ -71,6 +71,7 @@ const getGymDetailsController = async(req,res,next) => {
           success:false,
           error:e
       })
+      console.log("Gey you")
    } 
 }
 
