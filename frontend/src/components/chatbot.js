@@ -8,8 +8,8 @@ import { useNavigate } from 'react-router-dom';
 
 
   var lexparams = {
-      botAliasId: "TSTALIASID",
-      botId: "7I7BP40L9U", 
+      botAliasId: "",
+      botId: "", 
       localeId: "en_US",
       sessionId: "some_session_id1",
       text: '',
