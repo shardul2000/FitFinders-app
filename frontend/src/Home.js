@@ -3,7 +3,6 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import background from './assets/Mathing.png';
 import './css/home.css';
-import findbuddy from'./assets/findbuddy.png'
 import Card from "./components/card";
 import GymCard from "./components/gymcard";
 import BuddyCard from "./components/buddycard";
@@ -12,13 +11,13 @@ import { Link } from "react-router-dom";
 import AdvertsCard from "./components/advertsCard";
 import Bot from "./components/chatbot"; 
 
-/*  */
+
 export default function Home(){
     return(
         <div>
             <Navbar /> 
              
-                <Container>
+            <Container>
              <Grid container sx={{marginTop:3, marginBottom:3}}>
                 <Grid item xs={12} sm={6} md={6} lg={6} sx={{minHeight:850}}>
                     

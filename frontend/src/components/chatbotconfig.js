@@ -3,6 +3,7 @@ import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 
     const REGION = "us-east-1";
+    
     // Create an Amazon Lex service client object.
     const lexClient = new LexRuntimeV2Client({
     region: REGION,

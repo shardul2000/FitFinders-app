@@ -11,7 +11,7 @@ export default function GymCard() {
       <MDBCardImage src={gym} alt='...' position='top' />
       <MDBCardBody>
         <MDBCardText>
-         Browse Gyms
+         Find Gyms
         </MDBCardText>
       </MDBCardBody>
     </MDBCard>
