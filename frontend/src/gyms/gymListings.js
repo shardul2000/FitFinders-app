@@ -14,12 +14,13 @@ import axios from "axios";
 
 export default function GymListings(){
 
-  const [age, setAge]  =   useState('');
   const [gyms,setGyms] =  useState([]);
+  const [city, setCity] = useState('');
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const handleCityChange = (event) => {
+    setCity(event.target.value);
   };
+
 
   useEffect(() => {
     axios.get("/api/gym/getGymListings")
@@ -29,13 +30,13 @@ export default function GymListings(){
     .catch((e)=>{
         console.log("Something went wrong while fetching gyms")
     })
-  }, []);
+  }, [city]);
 
 
     return(
         <>
             <Navbar />
-                <div className="container">
+                <div className="container" style={{minHeight:'15em'}}>
                 <Grid container spacing={3} sx={{marginTop:4, marginBottom:4}}>
                     <Grid item xs={4} sm={3} md={3} lg={2}>
                          <Typography variant="h6">Filter by Location:</Typography>
@@ -46,10 +47,11 @@ export default function GymListings(){
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
-                                value={age}
+                                value={city}
                                 label="Age"
-                                onChange={handleChange}
+                                onChange={handleCityChange}
                                 >
+                                <MenuItem value={''}>--</MenuItem>
                                 <MenuItem value={'Toronto'}>Toronto</MenuItem>
                                 <MenuItem value={'Halifax'}>Halifax</MenuItem>
                                 <MenuItem value={'Montreal'}>Montreal</MenuItem>
@@ -61,21 +63,24 @@ export default function GymListings(){
 
                 <Grid container spacing={3} sx={{marginTop:4, marginBottom:4}}>
                     {
-                        gyms.map((element)=>{
-                        return(
-                            <Grid item xs={12} sm={6} md={6} lg={4}>
-                                    <Link to={`/gymdetails/${element.name}`}><ListingCard gym={element} /></Link>
-                            </Grid>
-                            )
+                       
+                        gyms.filter((item)=>{
+                          return item.city.includes(city)
                         })
+                        .map((element) => {
+                            return (
+                                <Grid item xs={12} sm={6} md={6} lg={4}>
+                                   <Link to={`/gymdetails/${element.name}`}><ListingCard gym={element} /></Link>
+                                </Grid>
+                            );
+                        })		
                     } 
                 </Grid>        
-                
-                
-                    
-                    <Link to="/gymRegister" variant="body2">   
-                      Looking to register your gym? Click here
-                    </Link>
+                <br />
+                <Link to="/gymRegister" variant="body2">   
+                    Looking to register your gym? Click here
+                </Link>
+                <br />
                 </div>
             <Footer />
         </>

@@ -33,7 +33,7 @@ export default function Editmodal({open, handleClose, handleOpen, values, setVal
       if(valuesFinal){
         axios.post("/api/users/addData", values)
         .then(()=>{
-           alert("Profile Updated. Please refresh to see changes")
+           alert("Profile Updated. Please refresh the page to see changes")
         })
         .catch((e)=>{
             alert(e)

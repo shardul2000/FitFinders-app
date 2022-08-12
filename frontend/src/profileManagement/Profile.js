@@ -65,7 +65,7 @@ export default function Profile(){
             Authorization: `${localStorage.getItem("jwtToken")}`
         }})
         .then((res)=>{
-          alert("Review posted");
+          alert("Review posted. Please refresh the page to see the changes");
         })
         .catch((e)=>{
            alert("Something went wrong, check back later \n");

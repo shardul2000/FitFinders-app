@@ -6,6 +6,9 @@ import {
   MDBCarouselItem,
   MDBCarouselElement,
 } from 'mdb-react-ui-kit';
+import gym1 from '../assets/gym1.jpg';
+import gym2 from '../assets/gym2.jpg';
+
 
 export default function Carousel({gym}) {
   return (
@@ -15,11 +18,11 @@ export default function Carousel({gym}) {
         <MDBCarouselItem className='active' style={{height:'30em', backgroundColor: 'lightgrey'}}>
           <MDBCarouselElement src={gym.coverImage} alt='...'style={{height:'30em', objectFit:'contain'}} />
         </MDBCarouselItem>
-        <MDBCarouselItem>
-          <MDBCarouselElement src='https://mdbootstrap.com/img/new/slides/042.webp' alt='...' style={{height:'30em', objectFit:'contain'}}/>
+        <MDBCarouselItem style={{height:'30em', backgroundColor: 'lightgrey'}}>
+          <MDBCarouselElement src={gym1} alt='...' style={{height:'30em', objectFit:'contain'}}/>
         </MDBCarouselItem>
-        <MDBCarouselItem>
-          <MDBCarouselElement src='https://mdbootstrap.com/img/new/slides/043.webp' alt='...' style={{height:'30em', objectFit:'contain'}} />
+        <MDBCarouselItem style={{height:'30em', backgroundColor: 'lightgrey'}}>
+          <MDBCarouselElement src={gym2} alt='...' style={{height:'30em', objectFit:'contain'}} />
         </MDBCarouselItem>
       </MDBCarouselInner>
     </MDBCarousel>
