@@ -65,7 +65,7 @@ export default function GymForm() {
                 'content-type': 'multipart/form-data',
               },
             };
-            axios.post("/api/users/uploadAvatar", formData, config)
+            axios.post("http://fatback-env-1.eba-q5mmqtxi.us-east-1.elasticbeanstalk.com/api/users/uploadAvatar", formData, config)
             .then((res)=>{
                 values.coverImage = res.data.s3uri;
                 console.log(res.data.s3uri);
@@ -73,7 +73,7 @@ export default function GymForm() {
                 return values;
             })
             .then((data)=>{
-              axios.post('/api/gym/createGymListing',data)
+              axios.post('http://fatback-env-1.eba-q5mmqtxi.us-east-1.elasticbeanstalk.com/api/gym/createGymListing',data)
               .then((res)=>{
                   alert("Thank you, our team will verify the details");
                   navigate("/gymlistings")

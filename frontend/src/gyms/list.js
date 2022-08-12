@@ -17,7 +17,7 @@ export default function AlignItemsList({post}) {
    const[userdata, setUserData] = useState({});
 
   useEffect(()=>{
-    axios.get(`/api/users/getUserData/${post.userId}`)
+    axios.get(`http://fatback-env-1.eba-q5mmqtxi.us-east-1.elasticbeanstalk.com/api/users/getUserData/${post.userId}`)
     .then((res)=>{
         setUserData(res.data.userData);
     })

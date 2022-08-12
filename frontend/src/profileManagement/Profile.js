@@ -25,7 +25,7 @@ export default function Profile(){
     useEffect(()=>{
         const asyncFunc = async()=>{
             try{
-                const data = await axios.get(`/api/users/getUserData/${id}`,{headers: {
+                const data = await axios.get(`http://fatback-env-1.eba-q5mmqtxi.us-east-1.elasticbeanstalk.com/api/users/getUserData/${id}`,{headers: {
                    "Content-Type": "application/json",
                    Authorization: `${localStorage.getItem("jwtToken")}`
                }});
@@ -40,7 +40,7 @@ export default function Profile(){
         }
        asyncFunc(); 
        
-       axios.get(`/api/profile/getReviews/${id}`)
+       axios.get(`http://fatback-env-1.eba-q5mmqtxi.us-east-1.elasticbeanstalk.com/api/profile/getReviews/${id}`)
        .then((res)=>{
            setReviewsList(res.data.reviews);
        })
@@ -60,7 +60,7 @@ export default function Profile(){
             rating:rating
         }
         
-        axios.post('/api/profile/postReview',entry,{headers: {
+        axios.post('http://fatback-env-1.eba-q5mmqtxi.us-east-1.elasticbeanstalk.com/api/profile/postReview',entry,{headers: {
             "Content-Type": "application/json",
             Authorization: `${localStorage.getItem("jwtToken")}`
         }})

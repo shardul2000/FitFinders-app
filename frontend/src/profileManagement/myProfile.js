@@ -57,7 +57,7 @@ export default function MyProfile(){
     const [tags, setTags] = useState([]);
     useEffect(()=>{
        
-        axios.get(`/api/users/getUserData/${localStorage.getItem("uid")}`,{headers: {
+        axios.get(`http://fatback-env-1.eba-q5mmqtxi.us-east-1.elasticbeanstalk.com/api/users/getUserData/${localStorage.getItem("uid")}`,{headers: {
             "Content-Type": "application/json",
             Authorization: `${localStorage.getItem("jwtToken")}`
         }})
@@ -76,7 +76,7 @@ export default function MyProfile(){
     },[])
 
     useEffect(()=>{
-        axios.get(`/api/profile/getReviews/${localStorage.getItem("uid")}`)
+        axios.get(`http://fatback-env-1.eba-q5mmqtxi.us-east-1.elasticbeanstalk.com/api/profile/getReviews/${localStorage.getItem("uid")}`)
         .then((res)=>{
             setReviewsList(res.data.reviews);
         })

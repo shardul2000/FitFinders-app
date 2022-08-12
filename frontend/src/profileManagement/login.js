@@ -77,6 +77,7 @@ export default function Login() {
             }
             localStorage.setItem("jwtToken", idToken);
             localStorage.setItem("uid", uid);
+            alert(idToken);
             localStorage.setItem("currentUser",JSON.stringify( CurrentUser));
             setError('');
             navigate('/myProfile');

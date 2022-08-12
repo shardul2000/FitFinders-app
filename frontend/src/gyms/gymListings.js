@@ -23,7 +23,7 @@ export default function GymListings(){
 
 
   useEffect(() => {
-    axios.get("/api/gym/getGymListings")
+    axios.get("http://fatback-env-1.eba-q5mmqtxi.us-east-1.elasticbeanstalk.com/api/gym/getGymListings")
     .then((res)=>{
         setGyms(res.data.gyms);
     })

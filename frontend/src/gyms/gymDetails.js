@@ -18,7 +18,7 @@ export default function GymDetails(){
     useEffect(()=>{
 
         let data=[];
-        axios.get(`/api/gym/getGymDetails/${gym}`,{headers: {
+        axios.get(`http://fatback-env-1.eba-q5mmqtxi.us-east-1.elasticbeanstalk.com/api/gym/getGymDetails/${gym}`,{headers: {
             "Content-Type": "application/json",
             Authorization: `${localStorage.getItem("jwtToken")}`
         }})

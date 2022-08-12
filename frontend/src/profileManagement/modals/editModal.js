@@ -31,7 +31,10 @@ export default function Editmodal({open, handleClose, handleOpen, values, setVal
     //make post request after making sure values is being updated
     useEffect(()=>{
       if(valuesFinal){
-        axios.post("/api/users/addData", values)
+        axios.post("http://fatback-env-1.eba-q5mmqtxi.us-east-1.elasticbeanstalk.com/api/users/addData", values,{headers: {
+          "Content-Type": "application/json",
+          Authorization: `${localStorage.getItem("jwtToken")}`
+      }})
         .then(()=>{
            alert("Profile Updated. Please refresh the page to see changes")
         })
@@ -51,9 +54,10 @@ export default function Editmodal({open, handleClose, handleOpen, values, setVal
             const config = {
               headers: {
                 'content-type': 'multipart/form-data',
+                Authorization: `${localStorage.getItem("jwtToken")}`
               },
             };
-            let res =  await axios.post("/api/users/uploadAvatar", formData, config);
+            let res =  await axios.post("http://fatback-env-1.eba-q5mmqtxi.us-east-1.elasticbeanstalk.com/api/users/uploadAvatar", formData, config);
             values.avatar = res.data.s3uri;
         }
         const formDataPics = new FormData();
@@ -68,7 +72,7 @@ export default function Editmodal({open, handleClose, handleOpen, values, setVal
                 'content-type': 'multipart/form-data',
               },
             };
-            let res =  await axios.post("/api/users/uploadPics", formDataPics, config);
+            let res =  await axios.post("http://fatback-env-1.eba-q5mmqtxi.us-east-1.elasticbeanstalk.com/api/users/uploadPics", formDataPics, config);
             //setPics([...pics,res.data.s3uri]);
 
             setValues({...values, pic1: res.data.s3uri[0],pic2:res.data.s3uri[1]})

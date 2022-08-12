@@ -9,7 +9,7 @@ export default function Reviews({review}){
     const[userData, setUserdata]=useState({});
 
     useEffect(() => {
-        axios.get(`/api/users/getUserData/${reviewerId}`)
+        axios.get(`http://fatback-env-1.eba-q5mmqtxi.us-east-1.elasticbeanstalk.com/api/users/getUserData/${reviewerId}`)
         .then((res)=>{
             setUserdata(res.data.userData);
         })
